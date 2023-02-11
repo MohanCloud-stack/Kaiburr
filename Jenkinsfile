@@ -18,7 +18,7 @@ stage("Run shell script") {
                 ws("/home/ubuntu/kaibur") {
                     sh "pwd"
                 }
-                sh "./1.sh"
+                sh "/home/ubuntu/kaibur/1.sh"
                 script {
                     def result = sh(returnStatus: true, script: './1.sh')
                     if (result != 0) {
