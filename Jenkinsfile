@@ -8,7 +8,7 @@ stage('Build') {
     }
 stage("Change Workspace") {
             steps {
-                ws("/home/ubuntu") {
+                ws("/home/ubuntu/kaibur") {
                     sh "pwd"
                 }
             }
