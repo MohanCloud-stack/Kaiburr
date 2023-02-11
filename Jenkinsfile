@@ -21,7 +21,8 @@ stage("Run shell script") {
                 sh "/home/ubuntu/kaibur/1.sh"
                 script {
                     def result = sh(returnStatus: true, script: '/home/ubuntu/kaibur/1.sh')
-                    if (result != 0) {
+                     def exitCode = sh(returnStatus: true, script: "/home/ubuntu/kaibur/1.sh")
+                    if (exitCode != 0) {
                         error("Shell script returned a non-zero exit code.");
                     }
                 }
