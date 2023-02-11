@@ -8,7 +8,9 @@ stage('Build') {
     }
 stage("Run shell script") {
             steps {
-                sh "./1.sh"
+                sh "
+                cd /home/ubuntu
+                ./1.sh"
                 script {
                     def result = sh(returnStatus: true, script: './1.sh')
                     if (result != 0) {
