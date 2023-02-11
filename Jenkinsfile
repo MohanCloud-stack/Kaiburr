@@ -6,9 +6,15 @@ stage('Build') {
          sh 'sudo docker build -t nodeapp01 .'
        }
     }
+stage("Change Workspace") {
+            steps {
+                ws("/home/ubuntu") {
+                    sh "pwd"
+                }
+            }
+    }
 stage("Run shell script") {
             steps {
-                sh "cd /home/ubuntu"
                 sh "./1.sh"
                 script {
                     def result = sh(returnStatus: true, script: './1.sh')
