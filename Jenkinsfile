@@ -15,6 +15,9 @@ stage("Change Workspace") {
     }
 stage("Run shell script") {
             steps {
+                ws("/home/ubuntu/kaibur") {
+                    sh "pwd"
+                }
                 sh "./1.sh"
                 script {
                     def result = sh(returnStatus: true, script: './1.sh')
