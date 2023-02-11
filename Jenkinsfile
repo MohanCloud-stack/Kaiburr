@@ -3,7 +3,7 @@ agent any
 stages {
 stage('Build') {
        steps {
-         sh 'docker build -t nodeapp01 .'
+         sh 'sudo docker build -t nodeapp01 .'
        }
     }
   }
