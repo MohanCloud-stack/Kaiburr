@@ -1,9 +1,11 @@
 pipeline {
-  agent any
-    stage('Build') {
+agent any
+stages {
+stage('Build') {
        steps {
          sh 'docker build -t nodeapp01 .'
        }
     }
+  }
     
 }
