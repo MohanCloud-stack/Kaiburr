@@ -23,7 +23,7 @@ stage("Run shell script") {
                     def result = sh(returnStatus: true, script: '/home/ubuntu/kaibur/1.sh')
                      def exitCode = sh(returnStatus: true, script: "/home/ubuntu/kaibur/1.sh")
                     if (exitCode != 0) {
-                        error("Shell script returned a non-zero exit code.");
+                        error("Shell script returned a non-zero exit codec");
                     }
                 }
             }
