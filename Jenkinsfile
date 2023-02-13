@@ -1,5 +1,10 @@
 pipeline {
 agent any
+environment {
+    registry ='devopsmohan/kaiburnodejs'
+    registryCredential ='devopsmohan'
+    dockerImage = ''
+  }
 stages {
 stage('Build') {
        steps {
@@ -45,4 +50,20 @@ stage('SonarQube Analysis') {
 
 
 }
+stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+stage('Deploy Image') {
+      steps{
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
 }
