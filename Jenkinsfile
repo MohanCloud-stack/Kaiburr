@@ -28,5 +28,21 @@ stage("Run shell script") {
                 }
             }
         }
+stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+}
+stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh 'npx sonar-scanner'
+                }
+            }
+        }
+
+
+
+
 }
 }
