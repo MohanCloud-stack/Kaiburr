@@ -67,10 +67,11 @@ stage("Deploying in EKS cluster"){
     ws("/home/ubuntu/kaibur") {
                     sh "pwd"
                 }
-  }
     script{
       "kubectl apply -f finalapp.yaml"
     }
+  }
+    
 }
 
 }
