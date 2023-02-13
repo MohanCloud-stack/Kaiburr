@@ -45,11 +45,6 @@ stage('SonarQube Analysis') {
                 }
             }
         }
-
-
-
-
-}
 stage('Building image') {
       steps{
         script {
@@ -66,4 +61,8 @@ stage('Deploy Image') {
         }
       }
     }
+
+
+
+}
 }
