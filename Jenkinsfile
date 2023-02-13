@@ -28,7 +28,7 @@ stage("Run shell script") {
                 }
             }
         }
-stage('Build') {
+stage('Building the node js app') {
             steps {
                 sh 'npm install'
             }
