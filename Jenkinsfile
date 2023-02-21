@@ -11,22 +11,12 @@ stage('Build') {
          sh 'sudo docker build -t nodeapp01 .'
        }
     }
-stage("Change Workspace") {
-            steps {
-                ws("/home/ubuntu/kaibur") {
-                    sh "pwd"
-                }
-            }
-    }
 stage("Run shell script") {
             steps {
-                ws("/home/ubuntu/kaibur") {
-                    sh "pwd"
-                }
-                sh "/home/ubuntu/kaibur/1.sh"
+                sh "/var/lib/jenkins/workspace/CICDPipelineMERN/1.sh"
                 script {
-                    def result = sh(returnStatus: true, script: '/home/ubuntu/kaibur/1.sh')
-                     def exitCode = sh(returnStatus: true, script: "/home/ubuntu/kaibur/1.sh")
+                    def result = sh(returnStatus: true, script: '/var/lib/jenkins/workspace/CICDPipelineMERN/1.sh')
+                     def exitCode = sh(returnStatus: true, script: "/var/lib/jenkins/workspace/CICDPipelineMERN/1.sh")
                     if (exitCode != 0) {
                         error("Shell script returned a non-zero exit codec");
                     }
@@ -62,17 +52,14 @@ stage('Deploy Image') {
       }
     }
 
-stage("Deploying in EKS cluster"){
-  steps{
-    ws("/home/ubuntu/kaibur") {
-                    sh "pwd"
-                }
-    script{
-      "kubectl apply -f finalapp.yaml"
-    }
-  }
+// stage("Deploying in EKS cluster"){
+//   steps{
+//     script{
+//       "kubectl apply -f finalapp.yaml"
+//     }
+//   }
     
-}
+// }
 
 }
 }
