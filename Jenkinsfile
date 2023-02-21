@@ -8,9 +8,6 @@ environment {
 stages {
 stage('Build') {
       steps {
-            ws("/home/ubuntu/kaibur") {
-                    sh "pwd"
-            }
          sh 'sudo docker build -t nodeapp01 .'
        }
     }
