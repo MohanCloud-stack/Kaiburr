@@ -52,14 +52,14 @@ stage('Deploy Image') {
       }
     }
 
-// stage("Deploying in EKS cluster"){
-//   steps{
-//     script{
-//       "kubectl apply -f finalapp.yaml"
-//     }
-//   }
+stage("Deploying in EKS cluster"){
+  steps{
+    script{
+     sh "/var/lib/jenkins/workspace/CICDPipelineMERN/2.sh"
+    }
+  }
     
-// }
+}
 
 }
 }
