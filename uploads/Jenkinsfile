@@ -23,6 +23,18 @@ stage("Run shell script") {
                 }
             }
         }
+stage('Building the node js app') {
+            steps {
+                sh 'npm install'
+            }
+}
+stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh 'npx sonar-scanner'
+                }
+            }
+    }
 
 stage('Building image') {
       steps{
@@ -30,7 +42,7 @@ stage('Building image') {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
-    }
+}
 stage('Deploy Image') {
       steps{
          script {
@@ -39,7 +51,14 @@ stage('Deploy Image') {
           }
         }
       }
-    }
+}
 
+stage("Deploying in EKS cluster"){
+  steps{
+    script{
+     sh "/var/lib/jenkins/workspace/CICDPipelineMERN/2.sh"
+    }
+  }
+}
 }
 }
