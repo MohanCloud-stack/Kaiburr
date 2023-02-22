@@ -7,7 +7,9 @@ IMAGE_NAME="hub.docker.com/devopsmohan/kaiburnodejs:39"
 
 # Create the EKS cluster
 #eksctl create cluster --name $CLUSTER_NAME --region $REGION
-eksctl create cluster --name  $CLUSTER_NAME --region us-east-1 --node-azs us-east-1a,us-east-1b
+eksctl create cluster --name  $CLUSTER_NAME --region $REGION --zones=us-east-1a,us-east-1b
+#eksctl create cluster --name kaiburnode --region us-east-1 --zones=us-east-1a,us-east-1b
+
 
 
 # Deploy the Docker image to the cluster
